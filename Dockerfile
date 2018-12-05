@@ -302,6 +302,7 @@ RUN if [ ${INSTALL_YARN} = true ]; then \
     fi && \
     echo "" >> ~/.bashrc && \
     echo 'export PATH="$HOME/.yarn/bin:$PATH"' >> ~/.bashrc \
+    source ~/.bashrc \
     && if [ ${NPM_REGISTRY} ]; then \
     yarn config set registry ${NPM_REGISTRY} \
     ;fi \
