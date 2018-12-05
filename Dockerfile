@@ -300,15 +300,15 @@ RUN if [ ${INSTALL_YARN} = true ]; then \
     else \
         curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version ${YARN_VERSION}; \
     fi && \
-    && if [ ${NPM_REGISTRY} ]; then \
+    if [ ${NPM_REGISTRY} ]; then \
     $HOME/.yarn/bin/yarn config set registry ${NPM_REGISTRY} \
-    ;fi \
-    && if [ ${NPM_REGISTRY_CHROMEDRIVER} ]; then \
+    ;fi && \
+    if [ ${NPM_REGISTRY_CHROMEDRIVER} ]; then \
     $HOME/.yarn/bin/yarn config set "chromedriver_cdnurl" ${NPM_REGISTRY_CHROMEDRIVER} \
-    ;fi \
-    && if [ ${NPM_REGISTRY_NODE_SASS} ]; then \
+    ;fi && \
+    if [ ${NPM_REGISTRY_NODE_SASS} ]; then \
     $HOME/.yarn/bin/yarn config set "sass_binary_site" ${NPM_REGISTRY_NODE_SASS} \
-    ;fi \
+    ;fi && \
     echo "" >> ~/.bashrc && \
     echo 'export PATH="$HOME/.yarn/bin:$PATH"' >> ~/.bashrc \
 ;fi
