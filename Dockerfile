@@ -300,18 +300,17 @@ RUN if [ ${INSTALL_YARN} = true ]; then \
     else \
         curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version ${YARN_VERSION}; \
     fi && \
-    echo "" >> ~/.bashrc && \
-    echo 'export PATH="$HOME/.yarn/bin:$PATH"' >> ~/.bashrc \
-    source ~/.bashrc \
     && if [ ${NPM_REGISTRY} ]; then \
-    yarn config set registry ${NPM_REGISTRY} \
+    $HOME/.yarn/bin/yarn config set registry ${NPM_REGISTRY} \
     ;fi \
     && if [ ${NPM_REGISTRY_CHROMEDRIVER} ]; then \
-    yarn config set "chromedriver_cdnurl" ${NPM_REGISTRY_CHROMEDRIVER} \
+    $HOME/.yarn/bin/yarn config set "chromedriver_cdnurl" ${NPM_REGISTRY_CHROMEDRIVER} \
     ;fi \
     && if [ ${NPM_REGISTRY_NODE_SASS} ]; then \
-    yarn config set "sass_binary_site" ${NPM_REGISTRY_NODE_SASS} \
+    $HOME/.yarn/bin/yarn config set "sass_binary_site" ${NPM_REGISTRY_NODE_SASS} \
     ;fi \
+    echo "" >> ~/.bashrc && \
+    echo 'export PATH="$HOME/.yarn/bin:$PATH"' >> ~/.bashrc \
 ;fi
 
 # Add YARN binaries to root's .bashrc
