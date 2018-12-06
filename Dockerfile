@@ -384,9 +384,9 @@ RUN if [ ${INSTALL_MYSQL_CLIENT} = true ]; then \
 ###########################################################################
 
 RUN php -v | head -n 1 | grep -q "PHP ${LARADOCK_PHP_VERSION}." && \
-    echo "" >> ~/.bashrc && \
-    echo "cd /var/www" >> ~/.bashrc && \
-    echo "" >> ~/.bashrc
+    echo "" >> /home/laradock/.bashrc && \
+    echo "cd /var/www" >> /home/laradock/.bashrc && \
+    echo "" >> /home/laradock/.bashrc
 
 #
 #--------------------------------------------------------------------------
