@@ -383,7 +383,10 @@ RUN if [ ${INSTALL_MYSQL_CLIENT} = true ]; then \
 # Check PHP version:
 ###########################################################################
 
-RUN php -v | head -n 1 | grep -q "PHP ${LARADOCK_PHP_VERSION}."
+RUN php -v | head -n 1 | grep -q "PHP ${LARADOCK_PHP_VERSION}." && \
+    echo "" >> ~/.bashrc && \
+    echo "cd /var/www" >> ~/.bashrc && \
+    echo "" >> ~/.bashrc
 
 #
 #--------------------------------------------------------------------------
